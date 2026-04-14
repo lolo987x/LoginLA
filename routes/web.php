@@ -12,4 +12,4 @@ Route::get('/register', function () {
     return view('Register');
 });
 
-Route::post('/register', [Controller::class, 'Register']);
+Route::post('/register', [Controller::class, 'Register']);      
