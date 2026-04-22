@@ -1,0 +1,6 @@
+-- Crear la base de datos
+DROP DATABASE IF EXISTS flap;
+CREATE DATABASE IF NOT EXISTS flap;
+
+-- Usar la base de datos
+USE flap;

@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Auth\GoogleController;
 
-Route::get('/', function () {
-    return view('Login');
-});
+Route::view('/', 'login');
+Route::view('/login', 'login')->name('login');
+Route::view('/register', 'register');
+Route::view('/dashboard', 'dashboard')->middleware('auth');
 
-Route::post('/login', [Controller::class, 'Login']);
 
-Route::get('/register', function () {
-    return view('Register');
-});
-
-Route::post('/register', [Controller::class, 'Register']);      
+Route::get('/auth/google', [GoogleController::class, 'redirect']);
+Route::get('/auth/google/callback', [GoogleController::class, 'callback']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class, 'register']);
